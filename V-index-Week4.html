@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manyam Vijay Kumar - Portfolio</title>
+  <style>
+    :root {
+      --primary: #295f94;
+      --accent: #4b8bbe;
+      --bg-light: #f0f8ff;
+      --card-bg: #ffffff;
+      --text-dark: #333;
+      --text-muted: #666;
+      --about-bg: #e7f3ff;
+      --skills-bg: #dff0d8;
+      --education-bg: #fdf2e9;
+      --contact-bg: #f3e5f5;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background-color: var(--primary);
+      color: white;
+    }
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1em;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    .main-title {
+      text-align: center;
+      font-size: 2.4em;
+      margin: 1.5em 0;
+      color: var(--primary);
+    }
+    .project-grid {
+      display: flex;
+      gap: 2em;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2em;
+    }
+    .project-box {
+      width: 280px;
+      height: 150px;
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      padding: 1.5em;
+      text-align: center;
+      font-size: 1.3em;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+      border: 2px solid var(--accent);
+      color: var(--primary);
+    }
+    .project-box:hover {
+      transform: scale(1.05);
+      background-color: var(--accent);
+      color: white;
+    }
+    .section-container {
+      margin: 2em auto;
+      max-width: 1000px;
+      padding: 2em;
+      border-radius: 20px;
+      background-color: var(--bg-light);
+    }
+    .inner-content {
+      background: var(--card-bg);
+      padding: 2em;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .section-heading {
+      text-align: center;
+      font-size: 2em;
+      color: var(--primary);
+      margin-bottom: 1.5em;
+      text-decoration: underline;
+    }
+    .card {
+      padding: 1.5em;
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 2em;
+    }
+    #about { background-color: var(--about-bg); }
+    #skills { background-color: var(--skills-bg); }
+    #education { background-color: var(--education-bg); }
+    #contact { background-color: var(--contact-bg); }
+
+    #skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+    #skills li {
+      background: var(--accent);
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 20px;
+      list-style: none;
+    }
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    input, textarea, select {
+      padding: 0.75em;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    button {
+      background: var(--primary);
+      color: white;
+      padding: 0.75em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: var(--accent);
+    }
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eef5fa;
+      padding: 0.75em;
+      border-radius: 10px;
+      margin-top: 0.5em;
+    }
+    .task span {
+      font-size: 0.9em;
+      color: var(--text-muted);
+    }
+    .filters {
+      margin-top: 1em;
+    }
+    .product-grid {
+      display: flex;
+      gap: 1.5em;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .product-card {
+      background: #f9fcff;
+      border: 1px solid #cbe1f5;
+      padding: 1em;
+      border-radius: 10px;
+      text-align: center;
+      width: 200px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .product-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.5em;
+    }
+    .product-card h4 {
+      margin: 0.5em 0 0.2em;
+      font-size: 1.1em;
+      color: var(--primary);
+    }
+    .product-card p {
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .product-card button {
+      margin-top: 0.5em;
+      width: 100%;
+    }
+    .education-card {
+      padding: 1em;
+      margin-bottom: 1em;
+      background-color: #f0f8ff;
+      border-left: 5px solid var(--accent);
+      border-radius: 10px;
+    }
+    .education-card h4 {
+      margin-bottom: 0.3em;
+      color: var(--primary);
+    }
+    .education-card span {
+      display: block;
+      font-size: 0.9em;
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .project-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+      .project-box {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">Vijay's Portfolio</a>
+  <nav>
+    <ul>
+      <li><a href="#portfolio-container">Portfolio</a></li>
+      <li><a href="#todo-container">To-Do</a></li>
+      <li><a href="#products-container">Products</a></li>
+    </ul>
+  </nav>
+</header>
+
+<h1 class="main-title">My Project Showcase</h1>
+<div class="project-grid">
+  <div class="project-box" onclick="scrollToSection('portfolio-container')">Portfolio</div>
+  <div class="project-box" onclick="scrollToSection('todo-container')">To-Do List</div>
+  <div class="project-box" onclick="scrollToSection('products-container')">Product Listing</div>
+</div>
+
+<!-- Portfolio Section -->
+<div class="section-container" id="portfolio-container">
+  <div class="inner-content">
+    <h2 class="section-heading">PORTFOLIO</h2>
+    <div class="card" id="about">
+      <h3>About Me</h3>
+      <p>Hello! I'm Manyam Vijay Kumar, a passionate web developer.</p>
+    </div>
+    <div class="card" id="skills">
+      <h3>Skills</h3>
+      <ul>
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Node.js</li>
+      </ul>
+    </div>
+    <div class="card" id="education">
+      <h3>Education</h3>
+      <div class="education-card"><h4>B.Tech in Computer Science</h4><span>Anurag University, Hyderabad</span><span>Expected Graduation: 2026</span></div>
+      <div class="education-card"><h4>Diploma in Electronics & Communication</h4><span>Anurag College of Engineering</span><span>Graduated: 2023</span></div>
+      <div class="education-card"><h4>SSC</h4><span>M B Grammar High School</span><span>Graduated: 2020</span></div>
+    </div>
+    <div class="card" id="contact">
+      <h3>Contact Me</h3>
+      <form id="contactForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p id="formMessage"></p>
+    </div>
+  </div>
+</div>
+
+<!-- TO-DO List Section -->
+<div class="section-container" id="todo-container">
+  <div class="inner-content">
+    <h2 class="section-heading">TO-DO LIST</h2>
+    <form id="todoForm">
+      <input type="text" id="taskDescription" placeholder="Task Description" required>
+      <select id="taskPriority">
+        <option value="High">High Priority</option>
+        <option value="Medium">Medium Priority</option>
+        <option value="Low">Low Priority</option>
+      </select>
+      <input type="date" id="taskDate" required>
+      <button type="submit">Add Task</button>
+    </form>
+    <div class="filters">
+      <label>Filter by Priority:</label>
+      <select id="priorityFilter">
+        <option value="All">All</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+    <div id="taskList"></div>
+  </div>
+</div>
+
+<!-- Product Section -->
+<div class="section-container" id="products-container">
+  <div class="inner-content">
+    <h2 class="section-heading">PRODUCT LISTING</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/products/R550ergonomicdesign_a7855db8-2412-4b7e-aa32-292b8eb8e2e7_1500x.jpg?v=1667828684" alt="Product 1">
+        <h4>Wireless Headphones</h4>
+        <p>$49.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="https://www.gonoise.com/cdn/shop/files/1200x1200_51__magic_1_1.png?v=1711280604" alt="Product 2">
+        <h4>Smartwatch</h4>
+        <p>$89.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="https://cdn.thewirecutter.com/wp-content/media/2024/11/portablebluetoothspeakers-2048px-9481.jpg?auto=webp&quality=75&width=1024" alt="Product 3">
+        <h4>Portable Speaker</h4>
+        <p>$35.00</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  }
+
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("formMessage").textContent = "Message successfully submitted!";
+    this.reset();
+  });
+
+  const form = document.getElementById('todoForm');
+  const taskList = document.getElementById('taskList');
+  const priorityFilter = document.getElementById('priorityFilter');
+
+  let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const description = document.getElementById('taskDescription').value;
+    const priority = document.getElementById('taskPriority').value;
+    const dueDate = document.getElementById('taskDate').value;
+
+    tasks.push({ description, priority, dueDate });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    renderTasks();
+    form.reset();
+  });
+
+  priorityFilter.addEventListener("change", renderTasks);
+
+  function renderTasks() {
+    taskList.innerHTML = "";
+    const filter = priorityFilter.value;
+
+    tasks.forEach((task, index) => {
+      if (filter !== "All" && task.priority !== filter) return;
+
+      const div = document.createElement("div");
+      div.className = "task";
+      div.innerHTML = `
+        <div>
+          <strong>${task.description}</strong><br>
+          <span>Priority: ${task.priority} | Due: ${task.dueDate}</span>
+        </div>
+        <button onclick="deleteTask(${index})">❌</button>
+      `;
+      taskList.appendChild(div);
+    });
+  }
+
+  function deleteTask(index) {
+    tasks.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    renderTasks();
+  }
+
+  renderTasks();
+</script>
+
+</body>
+</html>
